@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TEleicao", uniqueConstraints = @UniqueConstraint(columnNames = { "descricao" }))
@@ -27,12 +27,12 @@ public class Eleicao {
 	
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idEleicao")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Candidato> candidatos;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idEleicao")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Voto> votos;
 
 	public int getId() {

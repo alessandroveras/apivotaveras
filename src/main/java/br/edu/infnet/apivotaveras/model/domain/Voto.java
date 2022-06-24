@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "TVoto")
@@ -24,17 +24,17 @@ public class Voto {
 
 	@ManyToOne
 	@JoinColumn(name = "idEleitor")
-	@JsonIgnore
+	@JsonManagedReference
 	private Eleitor eleitor;
 
 	@ManyToOne
 	@JoinColumn(name = "idCandidato")
-	@JsonIgnore
+	@JsonManagedReference
 	private Candidato candidato;
 
 	@ManyToOne
 	@JoinColumn(name = "idEleicao")
-	@JsonIgnore
+	@JsonManagedReference
 	private Eleicao eleicao;
 
 	public Voto() {

@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "TEleitor", uniqueConstraints = @UniqueConstraint(columnNames = { "codigo" }))
@@ -29,7 +29,7 @@ public class Eleitor {
 	
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idEleitor")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Voto> votos;
 
 	public int getId() {
